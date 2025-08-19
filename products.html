@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Products - Torna Farms Premium Grapes</title>
+  <link rel="icon" type="image/png" href="img/Logo-nav.png">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial bold', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: white;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #4CAF50;
+    }
+
+    .nav-btns {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #45a049;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+
+
+    /* Products Section */
+    .products-section {
+      padding: 40px 5% 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 3.5rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.8s ease forwards;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .product-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.18);
+    }
+
+    .product-image-container {
+      position: relative;
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #4CAF50;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .product-info {
+      padding: 2.5rem;
+    }
+
+    .product-title {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .product-subtitle {
+      color: #4CAF50;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .product-description {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .product-details {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+
+    .detail-item {
+      text-align: center;
+    }
+
+    .detail-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .detail-value {
+      font-size: 0.95rem;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .features-list li {
+      padding: 0.3rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+      color: #555;
+    }
+
+    .features-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #4CAF50;
+      font-weight: bold;
+    }
+
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .availability.in-season {
+      color: #4CAF50;
+    }
+
+    .availability.off-season {
+      color: #ff9800;
+    }
+
+    .season-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .contact-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background: linear-gradient(135deg, #45a049, #4CAF50);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    }
+
+    /* Floating Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .float-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .float-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp {
+      background: #25D366;
+    }
+
+    .call {
+      background: #007bff;
+    }
+
+    /* Image loading placeholder */
+    .img-placeholder {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-weight: 500;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s;
+      }
+
+      .nav-links.active {
+        right: 0; 
+      } 
+
+      .hamburger {
+        display: block;
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .floating-buttons {
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-info {
+        padding: 1.5rem;
+      }
+      
+      .details-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Chat & Call Buttons -->
+  <!-- <div class="floating-buttons">
+    <a href="https://wa.me/919689232915" target="_blank" class="float-btn whatsapp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+919689232915" class="float-btn call">
+      <i class="fas fa-phone"></i>
+    </a>
+  </div> -->
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <img src="img/Logo-nav.png" alt="Torna Farms Logo" />
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About-us.html">About Us</a></li>
+      <li><a href="products.html" style="color: #4CAF50;">Products</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+
+
+    <!-- Instead of: <div class="hamburger">&#9776;</div> -->
+<!-- Use this: -->
+
+
+
+
+    <div class="nav-btns">
+      <button class="btn brochure-btn">Request Brochure</button>
+      <a href="#"><img src="img/instagram.png" alt="Instagram" class="icon" /></a>
+      <a href="#"><img src="img/facebook.png" alt="Facebook" class="icon" /></a>
+    </div>
+
+    <div class="hamburger">&#9776;</div>
+  </nav>
+
+
+
+  <!-- Products Section -->
+  <section class="products-section">
+    <div class="products-grid">
+      
+      <!-- Green Grapes Thompson Seedless -->
+      <div class="product-card">
+        <div class="product-image-container">
+          <div class="img-placeholder" id="placeholder-1">Loading Image...</div>
+          <img src="" alt="Green Thompson Seedless Grapes" style="display: none;" data-src="Grapes/Thomson seedless.jpg" class="product-img">
+          <div class="product-badge">Premium Quality</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Thomson Seedless</h3>
+          <p class="product-subtitle">Thompson Seedless Grapes</p>
+          <p class="product-description">
+            At Torna Farms, we take pride in delivering the finest Thomson Seedless green grapes, cultivated with care to meet international quality standards. Known for their exceptional sweetness, crisp texture, and long shelf life, our grapes are the perfect choice for both fresh consumption and global export markets.
+          </p>
+          
+          <!-- <div class="product-details">
+            <div class="details-grid">
+              <div class="detail-item">
+                <div class="detail-label">Size</div>
+                <div class="detail-value">Medium-Large</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Brix Level</div>
+                <div class="detail-value">16-18°</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Shelf Life</div>
+                <div class="detail-value">45-60 days</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Harvest</div>
+                <div class="detail-value">Jan-Mar</div>
+              </div>
+            </div>
+          </div> -->
+
+          <ul class="features-list">
+            <li>Seedless variety with excellent taste</li>
+            <li>High natural sugar content</li>
+            <li>Extended storage capability</li>
+            <li>Ideal for fresh fruit markets</li>
+            <li>GlobalGAP certified cultivation</li>
+          </ul>
+
+          <!-- <div class="availability in-season">
+            <div class="season-indicator"></div>
+            <span>In Season (January - March)</span>
+          </div> -->
+
+          <button class="contact-btn">Contact Us</button>
+        </div>
+      </div>
+
+      <!-- Black Grapes -->
+      <div class="product-card">
+        <div class="product-image-container">
+          <div class="img-placeholder" id="placeholder-2">Loading Image...</div> 
+          <img src="" alt="Black Beauty Grapes" style="display: none;" data-src="Grapes/crimson seedless Grapes.jpg" class="product-img">
+          <div class="product-badge">Premium Quality</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Crimson Seedless</h3>
+          <p class="product-subtitle">Crimson Seedless Grapes </p>
+          <p class="product-description">
+            “At Torna Farms, we take pride in delivering premium Crimson Seedless grapes, cultivated with utmost care to ensure superior quality. Renowned for their vibrant red color, rich sweetness, and firm texture, our grapes are ideal for fresh consumption and highly preferred in international export markets.”.
+          </p>
+          
+          <!-- <div class="product-details">
+            <div class="details-grid">
+              <div class="detail-item">
+                <div class="detail-label">Size</div>
+                <div class="detail-value">Large</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Brix Level</div>
+                <div class="detail-value">17-19°</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Shelf Life</div>
+                <div class="detail-value">35-45 days</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Harvest</div>
+                <div class="detail-value">Dec-Feb</div>
+              </div>
+            </div>
+          </div> -->
+
+          <ul class="features-list">
+            <li>Rich in anthocyanins and antioxidants</li>
+            <li>Deep purple-black attractive color</li>
+            <li>Excellent eating quality</li>
+            <li>Premium export standards</li>
+            <li>Sustainable farming practices</li>
+          </ul>
+
+          <!-- <div class="availability in-season">
+            <div class="season-indicator"></div>
+            <span>In Season (December - February)</span>
+          </div> -->
+
+          <button class="contact-btn">Contact Us</button>
+        </div>
+      </div>
+
+      
+      <!-- Red Globe Grapes -->
+      <div class="product-card">
+        <div class="product-image-container">
+          <div class="img-placeholder" id="placeholder-3">Loading Image...</div>
+          <img src="" alt="Red Globe Grapes" style="display: none;" data-src="Grapes/Sudhakar Seedless Online.jpg" class="product-img">
+          <div class="product-badge">Premium Quality</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Sudhakar Seedless</h3>
+          <p class="product-subtitle">Sudhakar Seedless Grapes</p>
+          <p class="product-description">
+            At Torna Farms, we proudly cultivate Sudhakar Seedless grapes, grown with precision and care to meet global standards. Valued for their large berry size, natural sweetness, and excellent shelf life, these grapes are an outstanding choice for both fresh consumption and export markets worldwide.
+          </p>
+          
+          <!-- <div class="product-details">
+            <div class="details-grid">
+              <div class="detail-item">
+                <div class="detail-label">Size</div>
+                <div class="detail-value">Extra Large</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Brix Level</div>
+                <div class="detail-value">15-17°</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Shelf Life</div>
+                <div class="detail-value">50-65 days</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Harvest</div>
+                <div class="detail-value">Feb-Apr</div>
+              </div>
+            </div>
+          </div> -->
+
+          <ul class="features-list">
+            <li>Extra large berry size</li>
+            <li>Attractive red to deep red color</li>
+            <li>Excellent transport tolerance</li>
+            <li>Premium appearance and taste</li>
+            <li>Extended shelf life capability</li>
+          </ul>
+
+          <!-- <div class="availability off-season">
+            <div class="season-indicator"></div>
+            <span>Pre-Season (February - April)</span>
+          </div> -->
+
+          <button class="contact-btn">Contact Us</button>
+        </div>
+      </div>
+
+      <!-- Organic Grapes -->
+      <div class="product-card">
+        <div class="product-image-container">
+          <div class="img-placeholder" id="placeholder-4">Loading Image...</div>
+          <img src="" alt="Organic Certified Grapes" style="display: none;" data-src="Grapes/sharad Seedless Grapes.jpg" class="product-img">
+          <div class="product-badge">Premium Quality</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Sharad Seedless</h3>
+          <p class="product-subtitle">Sharad Seedless</p>
+          <p class="product-description">
+            At Torna Farms, we specialize in producing premium Sharad Seedless grapes, nurtured with dedication to ensure top-quality standards. Distinguished by their deep purple hue, rich flavor, and firm texture, these grapes are a favorite for fresh consumption and hold strong appeal in international export markets.
+          </p>
+          
+          <!-- <div class="product-details">
+            <div class="details-grid">
+              <div class="detail-item">
+                <div class="detail-label">Certification</div>
+                <div class="detail-value">NPOP & EU</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Brix Level</div>
+                <div class="detail-value">16-18°</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Varieties</div>
+                <div class="detail-value">Mixed</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Harvest</div>
+                <div class="detail-value">Jan-Apr</div>
+              </div>
+            </div>
+          </div> -->
+
+          <ul class="features-list">
+            <li>100% chemical-free cultivation</li>
+            <li>NPOP and EU organic certified</li>
+            <li>Sustainable farming methods</li>
+            <li>Premium health-focused market</li>
+            <li>Traceability from farm to fork</li>
+          </ul>
+
+          <!-- <div class="availability in-season">
+            <div class="season-indicator"></div>
+            <span>In Season (January - April)</span>
+          </div> -->
+
+          <button class="contact-btn">Contact Us</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    
+    // if (hamburger && navLinks) {
+    //   hamburger.addEventListener('click', () => {
+    //     navLinks.classList.toggle('active');
+    //   });
+    // }
+
+    // Optimized image loading for products
+    function loadProductImages() {
+      const productImages = document.querySelectorAll('.product-img');
+      
+      productImages.forEach((img, index) => {
+        const placeholder = document.getElementById(`placeholder-${index + 1}`);
+        const imageSrc = img.getAttribute('data-src');
+        
+        if (imageSrc) {
+          const newImg = new Image();
+          newImg.onload = function() {
+            // Hide placeholder and show actual image
+            if (placeholder) {
+              placeholder.style.display = 'none';
+            }
+            img.src = this.src;
+            img.style.display = 'block';
+            
+            // Add fade-in effect
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => {
+              img.style.opacity = '1';
+            }, 50);
+          };
+          newImg.onerror = function() {
+            // Show error message in placeholder
+            if (placeholder) {
+              placeholder.innerHTML = 'Image not available';
+              placeholder.style.background = '#ffebee';
+              placeholder.style.color = '#c62828';
+            }
+          };
+          newImg.src = imageSrc;
+        }
+      });
+    }
+
+    // Intersection Observer for lazy loading
+    function initProductsLazyLoad() {
+      const productsSection = document.querySelector('.products-section');
+      
+      if (!productsSection) return;
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              loadProductImages();
+            }, 200);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: '100px'
+      });
+      
+      observer.observe(productsSection);
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initProductsLazyLoad();
+      });
+    } else {
+      initProductsLazyLoad();
+    }
+
+    // Contact button functionality
+    document.querySelectorAll('.contact-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const grapeName = this.textContent.replace('Get Quote for ', '');
+        const message = `Hi! I'm interested in ${grapeName}. Could you please provide more details and pricing?`;
+        const whatsappUrl = `https://wa.me/919689232915?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+      });
+    });
+  </script>
+
+</body>
+</html>
